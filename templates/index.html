@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Song Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        input[type="text"], select {
+            width: 300px;
+            padding: 10px;
+            margin: 10px 0;
+            display: block;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            width: 320px;
+            background-color: #5cb85c;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+  <h2>Song Recommendation System</h2>
+  <form action="/recommend" method="post">
+      User ID:
+      <select name="user_id">
+          {% for user_id in user_ids %}
+          <option value="{{ user_id }}">{{ user_id }}</option>
+          {% endfor %}
+      </select><br>
+      
+      Song Title:
+      <select name="song_title">
+          {% for title in song_titles %}
+          <option value="{{ title }}">{{ title }}</option>
+          {% endfor %}
+      </select><br>
+      
+      <input type="submit" value="Get Recommendations">
+      <!-- Add the visualization at the end of the page -->
+    
+  </form>
+  <div style="text-align: center; margin-top: 50px;">
+
+    <a href="{{ url_for('most_listened_songs') }}">Top 10 Most Listened Songs</a><br>
+
+    <a href="{{ url_for('top_artists') }}">Top 10 Most Popular Artists</a><br>
+    
+    <a href="{{ url_for('latest_hits') }}">Distribution of Song</a>
+    
+  </div>
+
+</body>
+</html>

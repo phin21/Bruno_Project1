@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommendations</title>
+    <style>
+        /* ... existing CSS ... */
+        .recommendation-item {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+        }
+        .recommendation-item:nth-child(odd) {
+            background-color: #f2f2f2; /* Light grey for odd items */
+        }
+        .recommendation-item:nth-child(even) {
+            background-color: #ddd; /* Slightly darker grey for even items */
+        }
+    </style>
+</head>
+<body>
+    <h2>Recommended Songs</h2>
+    <div class="recommendations">
+        {% for song in recommendations %}
+            <div class="recommendation-item">{{ loop.index }}. {{ song }}</div>
+        {% endfor %}
+    </div>
+    <a href="/" class="button">Back to Home</a>
+</body>
+</html>
